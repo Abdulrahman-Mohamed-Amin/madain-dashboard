@@ -1,0 +1,122 @@
+<div class="layout">
+
+    <aside class="sidebar d-flex flex-column justify-content-between">
+        <div>
+
+            <div class="brand">
+                <span class="dot"></span>
+                <h3>لوحة التحكم</h3>
+            </div>
+
+            <nav>
+
+                <!-- PROJECTS -->
+                <div class="menu-group mt-4" routerLink="./hello">
+                    <button class="menu-btn">
+                        <span>
+                            <i class="far fa-home"></i>
+                            الرئيسية
+                        </span>
+                    </button>
+
+                </div>
+
+                <div class="menu-group">
+                    <button class="menu-btn" (click)="toggle('projects')">
+                        <span>
+                            <i class="pi pi-briefcase"></i>
+                            المشاريع
+                        </span>
+                        <i class="pi pi-chevron-down" [class.rotate]="openMenu === 'projects'"></i>
+                    </button>
+
+                    <div class="submenu" [class.open]="openMenu === 'projects'">
+                        <a routerLink="./show_projects">عرض المشاريع</a>
+                        <a routerLink="./add_project">إضافة مشروع</a>
+                    </div>
+                </div>
+
+                <!-- project type -->
+
+
+                <div class="menu-group" routerLink="./project_status">
+                    <button class="menu-btn">
+                        <span>
+                            <i class="fa-solid fa-chart-pie"></i>
+                            حالة المشاريع
+                        </span>
+                    </button>
+
+                </div>
+
+                <div class="menu-group" routerLink="./project_type">
+                    <button class="menu-btn">
+                        <span>
+                            <i class="fa-solid fa-list"></i>
+                            نوع المشاريع
+                        </span>
+                    </button>
+
+                </div>
+
+                <!-- SERVICES -->
+                <div class="menu-group">
+                    <button class="menu-btn" (click)="toggle('services')">
+                        <span>
+                            <i class="pi pi-th-large"></i>
+                            الخدمات
+                        </span>
+                        <i class="pi pi-chevron-down" [class.rotate]="openMenu === 'services'"></i>
+                    </button>
+
+                    <div class="submenu" [class.open]="openMenu === 'services'">
+                        <a routerLink="./show_services">عرض الخدمات</a>
+                        <a routerLink="./add_service">إضافة خدمة</a>
+                    </div>
+                </div>
+
+                <!-- NEWS -->
+                <div class="menu-group">
+                    <button class="menu-btn" (click)="toggle('news')">
+                        <span>
+                            <i class="pi pi-megaphone"></i>
+                            الأخبار
+                        </span>
+                        <i class="pi pi-chevron-down" [class.rotate]="openMenu === 'news'"></i>
+                    </button>
+
+                    <div class="submenu" [class.open]="openMenu === 'news'">
+                        <a routerLink="./show_news">عرض الأخبار</a>
+                        <a routerLink="./add_new">إضافة خبر</a>
+                    </div>
+
+                </div>
+
+
+            </nav>
+        </div>
+
+        <div class="logout  text-black mb-5">
+            <button class=" mx-auto" (click)="logout()">
+                <span>تسجيل الخروج</span>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <div class="actions">
+                <img src="assets/Asset 2صورة2.png" width="40" alt="">
+            </div>
+            <span class="title">Dashboard</span>
+
+        </header>
+
+        <section class="content">
+            <app-loader></app-loader>
+            <router-outlet></router-outlet>
+        </section>
+
+    </div>
+</div>

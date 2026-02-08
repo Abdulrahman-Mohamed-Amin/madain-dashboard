@@ -1,0 +1,291 @@
+<div class="container-fluid position-relative  pt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> اضافة مشروع </div>
+        <button class="main_button_outline" [routerLink]="['/dashboard/project_detils' , curuentId]"> عرض المشروع</button>
+    </div>
+
+    <form [formGroup]="editForm" (ngSubmit)="submit()">
+
+        <div class="row p-5 ">
+
+            <!-- ====================== اسم المشروع ====================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">اسم المشروع بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="name" formControlName="arTitle"
+                        [class.invalid]="(submitted && editForm.get('arTitle')?.invalid)">
+                    @if(editForm.get('arTitle')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enTitle" class="form-label">اسم المشروع بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enTitle" formControlName="enTitle"
+                        [class.invalid]="(submitted && editForm.get('enTitle')?.invalid)">
+                    @if(editForm.get('enTitle')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ====================== وصف المشروع ====================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arDescription" class="form-label">وصف المشروع بالعربي<span>*</span></label>
+                    <textarea formControlName="arDescription"
+                        [class.invalid]="(submitted && editForm.get('arDescription')?.invalid)"
+                        class="form-control"></textarea>
+                    @if(editForm.get('arDescription')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enDescription" class="form-label">وصف المشروع بالانجليزي<span>*</span></label>
+                    <textarea formControlName="enDescription"
+                        [class.invalid]="(submitted && editForm.get('enDescription')?.invalid)"
+                        class="form-control"></textarea>
+                    @if(editForm.get('enDescription')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ====================== موقع المشروع ====================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arLocationName" class="form-label">موقع المشروع بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arLocationName" formControlName="arLocationName"
+                        [class.invalid]="(submitted && editForm.get('arLocationName')?.invalid) ">
+                    @if(editForm.get('arLocationName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enLocationName" class="form-label">موقع المشروع بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enLocationName" formControlName="enLocationName"
+                        [class.invalid]="(submitted && editForm.get('enLocationName')?.invalid) ">
+                    @if(editForm.get('enLocationName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ====================== وصف موقع المشروع ====================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arLocationDescription" class="form-label">وصف موقع المشروع بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arLocationDescription"
+                        formControlName="arLocationDescription"
+                        [class.invalid]="(submitted && editForm.get('arLocationDescription')?.invalid)">
+                    @if(editForm.get('arLocationDescription')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enLocationDescription" class="form-label">وصف موقع المشروع
+                        بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enLocationDescription"
+                        formControlName="enLocationDescription"
+                        [class.invalid]="(submitted && editForm.get('enLocationDescription')?.invalid)">
+                    @if(editForm.get('enLocationDescription')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+
+            <!-- ========================= رابط موقع المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="locationUrl" class="form-label">رابط موقع المشروع <span>*</span></label>
+                    <input type="text" class="form-control" id="locationUrl" formControlName="locationUrl"
+                        [class.invalid]="(submitted && editForm.get('locationUrl')?.invalid)">
+                </div>
+            </div>
+
+            <!-- ========================= مساحة مسطحات المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="surfaceArea" class="form-label">مساحة مسطحات البناء <span>*</span></label>
+                    <input type="text" class="form-control" id="surfaceArea" formControlName="surfaceArea"
+                        [class.invalid]="(submitted && editForm.get('surfaceArea')?.invalid)">
+                </div>
+            </div>
+            <!-- ========================= مساحة أرض  المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="groundArea" class="form-label">مساحة أرض المشروع <span>*</span></label>
+                    <input type="text" class="form-control" id="groundArea" formControlName="groundArea"
+                        [class.invalid]="(submitted && editForm.get('groundArea')?.invalid)">
+                </div>
+            </div>
+            <!-- ========================= عدد مباني المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="buildingCount" class="form-label">عدد مباني المشروع <span>*</span></label>
+                    <input type="number" class="form-control" id="buildingCount" formControlName="buildingCount"
+                        [class.invalid]="(submitted && editForm.get('buildingCount')?.invalid)">
+                </div>
+            </div>
+            <!-- ========================= عدد وحدات المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="unitsCount" class="form-label">عدد وحدات المشروع <span>*</span></label>
+                    <input type="number" class="form-control" id="unitsCount" formControlName="unitsCount"
+                        [class.invalid]="(submitted && editForm.get('unitsCount')?.invalid)">
+                </div>
+            </div>
+
+            <!-- ========================= حالة المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">عمارة سكنية ام مجمع سكني <span>*</span></label>
+                    <select name="" id="" class="form-select" formControlName="projectCategory"
+                        [class.invalid]="(submitted && editForm.get('projectCategory')?.invalid)">
+                        <option value="" selected disabled hidden>اختر</option>
+                        <option value="1">عمارة</option>
+                        <option value="2">مجمع سكني</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ========================= حالة المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">حالة المشروع <span>*</span></label>
+                    <select name="" id="" class="form-select" formControlName="projectStatusId">
+                        <option value="" selected disabled hidden>اختر</option>
+                        @for(statue of projectStatus ; track statue.id){
+                        <option [value]="statue.id">{{statue.arName}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <!-- ========================= نوع المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">نوع المشروع <span>*</span></label>
+                    <select name="" id="" class="form-select" formControlName="projectTypeId">
+                        <option value="" selected disabled hidden>اختر</option>
+                        @for(type of projectTypes ; track type.id){
+                        <option [value]="type.id">{{type.arName}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- ========================= صورة الواجهة الرئيسية للمشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">صورة الواجهة الرئيسية للمشروع <span>*</span></label>
+                    <input type="file" accept="image/*" class="form-control" formControlName="interfaceImageFile"
+                        (change)="onInterfaceImageChange($event)">
+                </div>
+            </div>
+
+            <!-- ========================= الملف التعريفي  المشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">الملف التعريفي للمشروع <span>*</span></label>
+                    <input type="file" accept=".pdf" class="form-control" formControlName="proposalFile"
+                        (change)="onProposalFileChange($event)">
+                </div>
+            </div>
+
+            <!-- ========================= فيديو للمشروع ان وجد======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="videoFile" class="form-label">فيديو للمشروع <span>(ان وجد)*</span></label>
+                    <input type="file" accept="video/*" class="form-control" formControlName="videoFile"
+                        (change)="onVideoSelected($event)">
+                </div>
+            </div>
+            <!-- ========================= صور للمشروع ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="imageFiles" class="form-label">صور للمشروع <span>*</span></label>
+                    <input type="file" accept="image/*" class="form-control" formControlName="imageFiles" multiple
+                        (change)="onImagesSelected($event)">
+                </div>
+            </div>
+            <!-- ========================= مباع ام لا  ======================= -->
+
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="name" class="form-label"> هل المشروع مباع ام لا<span>*</span></label>
+                    <input type="checkbox" class="check-box" formControlName="isSealed">
+                </div>
+            </div>
+
+
+
+        </div>
+        <button class="main_button">ارسال</button>
+
+    </form>
+
+
+    <section class="gallery-wrap mt-5">
+        
+        <header class="gallery-head">
+            <div class="title">
+                <h3>صور المشروع</h3>
+                <p>اضغط على الصورة لتحديدها للحذف. الصور المحددة ستظهر بإطار أحمر.</p>
+            </div>
+
+            <div class="legend">
+                <span class="dot normal"></span><span>عادي</span>
+                <span class="dot selected"></span><span>محدد للحذف</span>
+            </div>
+        </header>
+
+        <!-- Grid -->
+        <div class="gallery-grid">
+            <!-- صورة عادية -->
+             @if(project?.projectImages?.length){
+
+                 @for(img of (project?.projectImages ?? []); track $index){
+                 <button type="button" class="img-tile" (click)="deletImgs(img)" [ngClass]="{'is-selected': imgsTodelet.includes(img)}">
+                     <img [src]="imgUrl + img" alt="Project image">
+                     <span class="badge">{{$index + 1}}</span>
+                     <span class="hint">اضغط للتحديد</span>
+                 </button>
+                 }
+             }
+            
+            
+        </div>
+
+    </section>
+
+
+
+</div>

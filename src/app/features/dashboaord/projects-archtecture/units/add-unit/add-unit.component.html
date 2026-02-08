@@ -1,0 +1,124 @@
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> اضافة وحدة </div>
+        <button class="main_button_outline" [routerLink]="['/dashboard/project_detils' , projectId]">عرض الوحدة</button>
+    </div>
+
+    <h3 class="text-center mt-5">اضافة وحدة </h3>
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+        <div class="row p-3 ">
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arTitle" class="form-label">اسم الوحدة <span>*</span></label>
+                    <input type="text" class="form-control" id="arTitle" formControlName="arTitle"
+                        [class.invalid]="(submitted && addForm.get('arTitle')?.invalid) && addForm.get('arTitle')?.touched">
+                    @if(addForm.get('arTitle')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================  عدد الغرف  ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arTitle" class="form-label">عدد الغرف <span>*</span></label>
+                    <input type="number" class="form-control" id="enTitle" formControlName="enTitle"
+                        [class.invalid]="(submitted && addForm.get('enTitle')?.invalid)">
+                </div>
+            </div>
+
+            <!-- ==================  سعر الوحدة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="price" class="form-label">سعر الوحدة<span>*</span></label>
+                    <input type="text" class="form-control " id="price" formControlName="price"
+                        [class.invalid]="(submitted && addForm.get('price')?.invalid) && addForm.get('price')?.touched">
+                    @if(addForm.get('price')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================== النوع ================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arDescription" class="form-label"> الوحدة بالعربي<span>*</span></label>
+                    <select name="" id="" [class.invalid]="(submitted && addForm.get('arDescription')?.invalid)"
+                        class="form-select" formControlName="arDescription">
+                        <option [ngValue]="null" disabled>اختر</option>
+                        <option value="شقة">شقة</option>
+                        <option value="ملحق">ملحق</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ==================  مساحة الوحدة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="area" class="form-label">مساحة الوحدة<span>*</span></label>
+                    <input type="text" class="form-control " id="area" formControlName="area"
+                        [class.invalid]="(submitted && addForm.get('area')?.invalid) && addForm.get('area')?.touched">
+                    @if(addForm.get('area')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================  طابق الوحدة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="floor" class="form-label">الطابق<span>*</span></label>
+                    <input type="number" class="form-control " id="floor" formControlName="floor"
+                        [class.invalid]="(submitted && addForm.get('floor')?.invalid) && addForm.get('floor')?.touched">
+                    @if(addForm.get('floor')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================  صورة الوحدة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="imageFiles" class="form-label">صورة للشقة <span>*</span></label>
+                    <input type="file" class="form-control " id="imageFiles"
+                        [class.invalid]="(submitted && addForm.get('imageFiles')?.invalid)" accept="image/*"
+                        (change)="onImagesSelected($event)" formControlName="imageFiles">
+                </div>
+            </div>
+            <!-- ==================  حالة الوحدة ================= -->
+
+            <div class="col-6">
+                <label for="" class="form-label">حالة الوحدة <span>*</span></label>
+                <div class="sold-check">
+
+                    <label class="check-wrap">
+                        <input type="checkbox" formControlName="isSealed">
+                        <span class="check-box"></span>
+                        <span class="check-label">الوحدة مباعة</span>
+                    </label>
+                
+                    <span class="status" [class.sold]="addForm.get('isSealed')?.value"
+                        [class.available]="!addForm.get('isSealed')?.value">
+                        {{ addForm.get('isSealed')?.value ? 'مباعة' : 'غير مباعة' }}
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <button class="main_button ">ارسال</button>
+
+    </form>
+</div>

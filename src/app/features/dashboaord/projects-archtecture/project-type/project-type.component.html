@@ -1,0 +1,133 @@
+<div class="container-fluid position-relative pt-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> إضافة نوع مشروع</div>
+        <button class="main_button_outline" routerLink="/dashboard/add_project"><i class="fas fa-plus"></i> اضافة
+            مشروع</button>
+    </div>
+
+    <h3 class="text-center mt-5">اضافة نوع مشروع</h3>
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+        <div class="row p-5 ">
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">اسم النوع بالعربي<span>*</span></label>
+                    <input type="email" class="form-control" id="name" formControlName="arName"
+                        [class.invalid]="(submitted && addForm.get('arName')?.invalid) && addForm.get('arName')?.touched">
+                    @if(addForm.get('arName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enName" class="form-label">اسم النوع بالانجليزي<span>*</span></label>
+                    <input type="email" class="form-control " id="enName" formControlName="enName"
+                        [class.invalid]="(submitted && addForm.get('enName')?.invalid) && addForm.get('enName')?.touched">
+                    @if(addForm.get('enName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <button class="main_button">ارسال</button>
+        </div>
+
+    </form>
+
+    <div class="lay" [ngClass]="{'open' : showEditForm}"></div>
+
+    <form [formGroup]="editForm" (ngSubmit)="edit()" class="editForm" [ngClass]="{'open' : showEditForm}">
+        <i class="fas fa-xmark close" (click)="showEditForm = false"></i>
+        <h2 class="text-center mt-4">تعديل النوع</h2>
+        <div class="row p-5 ">
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">اسم النوع بالعربي<span>*</span></label>
+                    <input type="email" class="form-control" id="name" formControlName="arName"
+                        [class.invalid]="( editForm.get('arName')?.invalid) && editForm.get('arName')?.touched">
+                    @if(editForm.get('arName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enName" class="form-label">اسم النوع بالانجليزي<span>*</span></label>
+                    <input type="email" class="form-control " id="enName" formControlName="enName"
+                        [class.invalid]="(editForm.get('enName')?.invalid) && editForm.get('enName')?.touched">
+                    @if(editForm.get('enName')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <button class="main_button">تعديل</button>
+        </div>
+
+    </form>
+</div>
+
+
+<h2 class="text-center mt-5">الانواع الموجودة</h2>
+<div class="dash-wrap  container">
+    <div class="data-card">
+        <div class="table-responsive">
+            <table class="table-modern">
+                <thead>
+                    <tr>
+                        <th style="width: 90px" class="text-center">ID</th>
+                        <th>NAME</th>
+                        <th style="width: 220px" class="text-end">ACTIONS</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (types.length > 0) {
+                    @for (item of types; track $index) {
+                    <tr>
+                        <td class="text-center" data-label="الرقم">
+                            <span class="id-pill">{{ $index + 1 }}</span>
+                        </td>
+
+                        <td data-label="الاسم">
+                            <div class="name">{{ item.arName }}</div>
+                            @if (item.enName) {
+                            <div class="meta">{{ item.enName }}</div>
+                            }
+                        </td>
+
+                        <td class="text-end" data-label="الإجراءات">
+                            <div class="actions">
+                                <button class="btn-action edit" (click)="edit()">
+                                    <span class="dot">✎</span> تعديل
+                                </button>
+
+                                <button class="btn-action delete" (click)="deleteType(item.id , $index)">
+                                    <span class="dot">🗑</span> حذف
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    } @else {
+                    <tr>
+                        <td colspan="3">
+                            <div class="empty">
+                                <div class="box">📦</div>
+                                <div class="title">لا توجد بيانات</div>
+                                <div>ابدأ بإضافة عنصر جديد .</div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

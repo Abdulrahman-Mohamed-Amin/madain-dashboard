@@ -1,0 +1,51 @@
+<div class="home mt-4">
+
+    <!-- WELCOME -->
+    <div class="welcome-card">
+        <div>
+            <h2>مرحباً 👋</h2>
+            <p>لوحة التحكم الخاصة بك جاهزة للإدارة</p>
+        </div>
+        <img src="assets/dashboard.svg" alt="">
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-card"  routerLink="/dashboard/show_projects">
+            <i class="pi pi-briefcase"></i>
+            <h3>{{projects.length}}</h3>
+            <span>مشروع</span>
+        </div>
+
+        <div class="stat-card"  routerLink="/dashboard/show_services">
+            <i class="pi pi-cog"></i>
+            <h3>{{services.length}}</h3>
+            <span>خدمة</span>
+        </div>
+
+        <div class="stat-card" routerLink="/dashboard/show_news">
+            <i class="pi pi-megaphone"></i>
+            <h3>{{news.length}}</h3>
+            <span>خبر</span>
+        </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="actions">
+        <a routerLink="/dashboard/add_project">
+            <i class="pi pi-plus"></i>
+            إضافة مشروع
+        </a>
+        <a routerLink="/dashboard/add_service">
+            <i class="pi pi-plus"></i>
+            إضافة خدمة
+        </a>
+        <a routerLink="/dashboard/add_new">
+            <i class="pi pi-plus"></i>
+            إضافة خبر
+        </a>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

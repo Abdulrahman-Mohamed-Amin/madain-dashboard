@@ -1,0 +1,14 @@
+.media{
+    margin: 50px 0;
+    justify-content: center;
+}
+.media img {
+    width: 40%;
+    height: 300px;
+    background: #000;
+    cursor: pointer;
+
+}
+.selected{
+    border: 3px solid rgb(255, 0, 0);
+}

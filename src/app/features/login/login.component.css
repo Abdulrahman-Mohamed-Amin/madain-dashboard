@@ -1,0 +1,143 @@
+.login {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.left {
+  width: 40%;
+  background: #fff;
+}
+
+
+.brand {
+  position: absolute;
+  top: 30px;
+  left: 100px;
+  transform: translate(-50%);
+  width: 100px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.logo .dot {
+  width: 250px;
+  height: 70px;
+  background: #6a5af9ab;
+  /* border-radius: 50%; */
+  margin-right: 10px;
+  position: absolute;
+  left: 50%;
+  top: 00%;
+  transform: translate(-50%);
+}
+
+.logo h2 {
+  margin: 0;
+  font-weight: 600;
+  position: relative;
+  font-size: 45px;
+}
+
+
+.login_img {
+  width: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.form {
+  max-width: 460px;
+  box-shadow: none;
+  margin: 0;
+  margin-bottom: 150px;
+  box-shadow: var(--shadow);
+  padding: 20px 20px 40px;
+  border-radius: 15px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: #585a6a;
+  margin-bottom: 7px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 26px;
+  border: 1px solid #e3e6ee;
+  background: #fff;
+  outline: none;
+  transition: .15s ease;
+}
+
+input:focus {
+  border-color: #6a5af9;
+  box-shadow: 0 0 0 4px rgba(106, 90, 249, .12);
+}
+
+.btn {
+  margin-top: 6px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  background:  #8b7bff;
+  transition: transform .08s ease, filter .12s ease;
+  margin: auto;
+  display: block;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:hover {
+  background: #6a5af9;
+}
+
+.right {
+  width: 60%;
+  background: #3b327e;
+  position: relative;
+}
+
+.right .shape {
+  position: absolute;
+  top: 0;
+  bottom: -1000px;
+  right: -350px;
+  width: 100vw;
+  transform: rotate(-90deg);
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 300px;
+  height: 100%;
+}
+
+.cont h1 {
+  font-size: 50px;
+}
+
+

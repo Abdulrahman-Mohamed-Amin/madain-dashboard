@@ -1,0 +1,66 @@
+.sold-check{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.check-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.check-wrap input{
+  display:none;
+}
+
+.check-box{
+  width:22px;
+  height:22px;
+  border-radius:6px;
+  border:2px solid #cbd5e1;
+  background:#fff;
+  position:relative;
+  transition:.2s;
+}
+
+.check-box::after{
+  content:'';
+  position:absolute;
+  inset:4px;
+  background:#22c55e;
+  border-radius:3px;
+  opacity:0;
+  transition:.15s;
+}
+
+.check-wrap input:checked + .check-box{
+  border-color:#22c55e;
+}
+
+.check-wrap input:checked + .check-box::after{
+  opacity:1;
+}
+
+.check-label{
+  font-weight:600;
+}
+
+.status{
+  font-size:13px;
+  padding:4px 10px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+.status.sold{
+  background:#e7f6ee;
+  color:#0f5132;
+}
+
+.status.available{
+  background:#fff5d6;
+  color:#7a5b00;
+}

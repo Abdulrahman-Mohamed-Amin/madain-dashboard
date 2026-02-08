@@ -1,0 +1,196 @@
+.page{
+  padding: 18px;
+  direction: rtl;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial;
+  color:#0f172a;
+}
+
+.page-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.crumbs{
+  color:#64748b;
+  font-size:13px;
+}
+.crumbs span{ margin:0 6px; color:#94a3b8; }
+
+.title{
+  margin:6px 0 2px;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-.2px;
+}
+.sub{
+  margin:0;
+  color:#64748b;
+  font-size:13px;
+}
+
+.head-actions{ display:flex; gap:10px; }
+
+.btn-soft{
+  border:1px solid #e2e8f0;
+  background: #ffffff;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, .06);
+  transition:.2s;
+}
+.btn-soft:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .10);
+}
+.icon{ font-weight:900; margin-left:6px; }
+
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:16px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .06);
+  margin-bottom:14px;
+}
+
+.search{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  padding:10px 12px;
+  border-radius:14px;
+}
+.search-ic{ color:#64748b; }
+.search input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-size:14px;
+  color:#0f172a;
+}
+
+.filters{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.filters select{
+  border:1px solid #e2e8f0;
+  background:#fff;
+  padding:10px 12px;
+  border-radius:12px;
+  outline:0;
+  font-weight:600;
+  color:#0f172a;
+  min-width: 180px;
+}
+
+.count{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  padding:10px 12px;
+  border-radius:12px;
+  color:#334155;
+  font-size:13px;
+}
+.count .dot{
+  width:9px; height:9px; border-radius:50%;
+  background:#22c55e;
+  box-shadow: 0 0 0 6px rgba(34,197,94,.12);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:12px;
+}
+
+.mini-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px 16px;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  transition:.2s ease;
+}
+
+.mini-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 12px 26px rgba(0,0,0,.10);
+}
+
+/* السطور */
+.row-text{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.label{
+  font-size:14px;
+  font-weight:800;
+  color:#0f172a;
+  min-width:70px;
+}
+
+.value{
+  font-size:14px;
+  font-weight:600;
+  color:#475569;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* الأزرار */
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:8px;
+}
+
+.btn-edit,
+.btn-delete{
+  border-radius:10px;
+  padding:7px 12px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+  border:1px solid;
+  transition:.2s ease;
+}
+
+.btn-edit{
+  background:#fff;
+  border-color:#e5e7eb;
+  color:#0f172a;
+}
+.btn-edit:hover{ background:#f8fafc; }
+
+.btn-delete{
+  background:rgba(239,68,68,.1);
+  border-color:rgba(239,68,68,.28);
+  color:#ef4444;
+}
+.btn-delete:hover{ background:rgba(239,68,68,.16); }
+
+

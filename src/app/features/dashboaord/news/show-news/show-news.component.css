@@ -1,0 +1,119 @@
+p {
+    margin: 0;
+}
+
+.row {
+    margin-top: 40px;
+}
+
+.main_button_outline {
+    margin-right: auto;
+    display: block;
+}
+
+.box {
+    background: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    height: 100%;
+    border: 1px solid #ddd;
+}
+
+.box .header {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 15px;
+
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.header span {
+    font-size: 14px;
+    color: #777;
+}
+
+.box .main {
+    padding: 10px 15px;
+}
+
+.add {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.add:hover .header {
+    border-bottom: var(--primary) 1px solid;
+}
+
+.add .main {
+    display: flex;
+    gap: 5px;
+    color: var(--primary);
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    font-size: 25px;
+}
+
+
+.numbers {
+    padding: 0 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.numbers .detils {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 5px 0;
+    width: 48%;
+    gap: 7px;
+    justify-content: start;
+}
+
+.numbers span:first-child {
+    font-weight: bold;
+}
+
+.numbers .num {
+    background: #4e46e57c;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    width: 45px;
+}
+
+
+.delete_btn {
+    border-color: red;
+    color: red;
+}
+
+.delete_btn:hover {
+    background: red;
+    border-color: red;
+    color: #fff;
+}
+
+button {
+    padding: 8px 15px;
+    margin: 20px 0 10px;
+}

@@ -1,0 +1,99 @@
+<!-- <div class="container-fluid pt-4 position-relative">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> عرض الخدمات </div>
+        <button class="main_button_outline" routerLink="/dashboard/add_service"><i class="fas fa-plus"></i> اضافة
+            خدمة</button>
+    </div>
+    <div class="row gy-4">
+
+
+        <div class="col-3">
+            <div class="add box" routerLink="/dashboard/add_service" >
+                <div class="header">
+                    <h3>اضافة خدمة</h3>
+                </div>
+                <div class="main">
+                    <i class="pi pi-plus"></i>
+                    <p>اضافة خدمة</p>
+                </div>
+            </div>
+        </div>
+
+        @for(service of services ; track $index){
+        <div class="col-3">
+            <div class="project box">
+                <div class="header d-flex justify-content-between align-items-center">
+                    <h3>{{service.arTitle}}</h3>
+                </div>
+                <div class="text main">
+                    <div class="actions d-flex gap-2 justify-content-center my-2">
+
+                        <button class="btn-action delete" (click)="showAlert(service.id , $index )">
+                            <span class="dot">🗑</span> حذف
+                        </button>
+                        <button class="btn-action edit" [routerLink]="['/dashboard/edit_service/' ,service.id]"> <span
+                                class="dot">✎</span>تعديل</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+
+    </div>
+</div> -->
+
+
+<section class="svc-page">
+  <!-- Top bar -->
+  <header class="svc-top">
+    <div class="svc-title">
+      <div class="breadcrumbs">لوحة التحكم <span>›</span> عرض الخدمات</div>
+      <h1>الخدمات</h1>
+      <p>إدارة الخدمات، تعديلها أو حذفها بسهولة.</p>
+    </div>
+
+    <button class="btn-primary" type="button" routerLink="/dashboard/add_service">
+      <span class="plus">＋</span>
+      إضافة خدمة
+    </button>
+  </header>
+
+  <!-- Grid -->
+  <section class="svc-grid">
+    <!-- Add card -->
+    <button class="svc-add" type="button" routerLink="/dashboard/add_service">
+      <div class="add-icon">＋</div>
+      <div class="add-text">
+        <h3>إضافة خدمة</h3>
+        <p>أنشئ خدمة جديدة خلال ثواني</p>
+      </div>
+    </button>
+
+    
+    @for (service of services; track $index) {
+        <!-- Service card (كررها بـ *ngFor) -->
+        <article class="svc-card">
+          <div class="svc-card-head">
+            <div class="svc-icon">📌</div>
+    
+            <div class="svc-meta">
+              <h3 class="svc-name">{{service.arTitle}}</h3>
+              <p class="svc-desc">{{service.arDescription}}</p>
+            </div>
+    
+          </div>
+    
+          <div class="svc-card-foot">
+    
+            <div class="svc-actions">
+              <button class="btn-light" type="button" [routerLink]="['/dashboard/edit_service' , service.id]">تعديل</button>
+              <button class="btn-danger" (click)="deleteService(service.id , $index)">حذف</button>
+            </div>
+          </div>
+        </article>
+
+    }
+  </section>
+</section>

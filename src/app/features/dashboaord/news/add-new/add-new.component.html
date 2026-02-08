@@ -1,0 +1,99 @@
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> اضافة خبر </div>
+        <button class="main_button_outline" routerLink="/dashboard/show_news">عرض الأخبار</button>
+
+    </div>
+
+    <h3 class="text-center mt-5">اضافة خبر </h3>
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+        <div class="row p-3 ">
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arTitle" class="form-label">اسم الخدمة بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arTitle" formControlName="arTitle"
+                        [class.invalid]="(submitted && addForm.get('arTitle')?.invalid) && addForm.get('arTitle')?.touched">
+                    @if(addForm.get('arTitle')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enTitle" class="form-label">اسم الخدمة بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enTitle" formControlName="enTitle"
+                        [class.invalid]="(submitted && addForm.get('enTitle')?.invalid) && addForm.get('enTitle')?.touched">
+                    @if(addForm.get('enTitle')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================== الوصف ================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arDescription" class="form-label">وصف الخدمة بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arDescription" formControlName="arDescription"
+                        [class.invalid]="(submitted && addForm.get('arDescription')?.invalid) && addForm.get('arDescription')?.touched">
+                    @if(addForm.get('arDescription')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enDescription" class="form-label">وصف الخدمة بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enDescription" formControlName="enDescription"
+                        [class.invalid]="(submitted && addForm.get('enDescription')?.invalid) && addForm.get('enDescription')?.touched">
+                    @if(addForm.get('enDescription')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ================== التاريخ ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="date" class="form-label">وصف الخدمة بالانجليزي<span>*</span></label>
+                    <input type="date" class="form-control " id="date" formControlName="date"
+                        [class.invalid]="(submitted && addForm.get('date')?.invalid) && addForm.get('date')?.touched">
+
+                </div>
+            </div>
+
+            <!-- ==================    فيديو الخدمة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="videoFile" class="form-label">فيديو للخدمة <span>*</span></label>
+                    <input type="file" class="form-control " id="videoFile"
+                        [class.invalid]="(submitted && addForm.get('videoFile')?.invalid) && addForm.get('videoFile')?.touched"
+                        accept="vedio/*" (change)="onVideoSelected($event)" formControlName="videoFile">
+                </div>
+            </div>
+
+            <!-- ==================  صورة الخدمة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="imageFiles" class="form-label">صورة للخدمة <span>*</span></label>
+                    <input type="file" class="form-control " id="imageFiles"
+                        [class.invalid]="(submitted && addForm.get('imageFiles')?.invalid)" accept="image/*"
+                        (change)="onImagesSelected($event)" formControlName="imageFiles">
+                </div>
+            </div>
+        </div>
+
+        <button class="main_button ">ارسال</button>
+
+    </form>
+</div>

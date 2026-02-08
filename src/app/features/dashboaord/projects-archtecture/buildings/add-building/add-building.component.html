@@ -1,0 +1,79 @@
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="crumbs">لوحة التحكم <span>›</span> اضافة مبنى </div>
+        <button class="main_button_outline" [routerLink]="['/dashboard/project_detils' , currentId]">عرض المبني</button>
+    </div>
+
+    <h3 class="text-center mt-5">اضافة مبنى </h3>
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+        <div class="row p-3 ">
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arTitle" class="form-label">اسم المبنى بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arTitle" formControlName="arTitle"
+                        [class.invalid]="(submitted && addForm.get('arTitle')?.invalid) && addForm.get('arTitle')?.touched">
+                    @if(addForm.get('arTitle')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enTitle" class="form-label">اسم المبنى بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enTitle" formControlName="enTitle"
+                        [class.invalid]="(submitted && addForm.get('enTitle')?.invalid) && addForm.get('enTitle')?.touched">
+                    @if(addForm.get('enTitle')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- ==================== الوصف ================== -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="arDescription" class="form-label">وصف المبنى بالعربي<span>*</span></label>
+                    <input type="text" class="form-control" id="arDescription" formControlName="arDescription"
+                        [class.invalid]="(submitted && addForm.get('arDescription')?.invalid) && addForm.get('arDescription')?.touched">
+                    @if(addForm.get('arDescription')?.errors?.['pattern']){
+                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enDescription" class="form-label">وصف المبنى بالانجليزي<span>*</span></label>
+                    <input type="text" class="form-control " id="enDescription" formControlName="enDescription"
+                        [class.invalid]="(submitted && addForm.get('enDescription')?.invalid) && addForm.get('enDescription')?.touched">
+                    @if(addForm.get('enDescription')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
+
+            <!-- =================== تابع لاي مشروع ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="enDescription" class="form-label">تابع لاي مشروع ؟<span>*</span></label>
+                    <select name="" id="" class="form-select" formControlName="projectId">
+                        <option [value]="null" selected>اختر ..</option>
+                        @for(project of projects ; track $index){
+                        <option [value]="project.id">{{project.arTitle}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+        <button class="main_button ">ارسال</button>
+
+    </form>
+</div>

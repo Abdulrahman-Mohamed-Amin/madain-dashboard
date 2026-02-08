@@ -1,0 +1,242 @@
+<section class="page">
+
+  <!-- Project Header -->
+  <header class="project-header mt-4">
+
+    <!-- RIGHT: Project Info -->
+    <div class="ph-right">
+
+      <div class="breadcrumbs">
+        <span>لوحة التحكم</span>
+        <span class="dot">•</span>
+        <span>المشاريع</span>
+        <span class="dot">•</span>
+        <span class="current">تفاصيل المشروع</span>
+      </div>
+
+      <h1 class="project-title">{{ project?.arTitle }}</h1>
+      <p class="project-desc">{{ project?.arDescription }}</p>
+
+      <!-- Project Meta -->
+      <div class="project-meta">
+
+        <div class="meta-grid">
+
+          <div class="meta-card">
+            <div class="m-label">الموقع</div>
+            <div class="m-value">{{ project?.arLocationName }}</div>
+            @if (project?.locationUrl) {
+            <a class="m-link" [href]="project?.locationUrl" target="_blank">
+              عرض على الخريطة ↗
+            </a>
+            }
+          </div>
+
+
+          <div class="meta-card">
+            <div class="m-label">تصنيف المشروع</div>
+            <div class="m-value">{{ project?.arProjectCategory }}</div>
+          </div>
+
+          <div class="meta-card">
+            <div class="m-label">مساحة المسطحات</div>
+            <div class="m-value">{{ project?.surfaceArea }} م²</div>
+          </div>
+
+          <div class="meta-card">
+            <div class="m-label">مساحة الأرض</div>
+            <div class="m-value">{{ project?.groundArea }} م²</div>
+          </div>
+          <div class="meta-card">
+            <div class="m-label">عدد المباني</div>
+            <div class="m-value">{{ project?.buildings?.length || 0 }} </div>
+          </div>
+          <div class="meta-card">
+            <div class="m-label">اجمالي الوحدات</div>
+            <div class="m-value">{{ project?.unitsCount || 0 }} </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- Actions -->
+      <div class="header-actions mt-3">
+        <button class="btn btn-primary" type="button" [routerLink]="['/dashboard/add_build' , project?.id]">
+          + إضافة مبنى
+        </button>
+        <button class="btn btn-ghost" type="button" [routerLink]="['/dashboard/edit_project' , project?.id]">
+          تعديل المشروع
+        </button>
+        <button class="btn btn-ghost danger" type="button" (click)="deleteProject()">
+          حذف المشروع
+        </button>
+      </div>
+
+    </div>
+
+    <!-- LEFT: Media -->
+    <div class="ph-left">
+
+      <div class="media-card">
+
+        <!-- Facade -->
+        <div class="media-hero">
+          @if (project?.interfaceImagePath) {
+          <img [src]="url + project?.interfaceImagePath" alt="واجهة المشروع" />
+          <span class="media-badge">واجهة المشروع</span>
+          } @else {
+          <div class="media-empty">
+            <span class="icon">🏢</span>
+            <span>لا توجد صورة واجهة</span>
+          </div>
+          }
+        </div>
+
+        <!-- Gallery -->
+        <div class="thumbs">
+          <div class="thumbs-head">
+            <div class="thumbs-title">صور المشروع</div>
+            <div class="thumbs-count">{{ project?.projectImages?.length || 0 }}</div>
+          </div>
+
+          @if (project?.projectImages?.length) {
+          <div class="thumbs-row">
+            @for (img of project?.projectImages; track $index) {
+            <div class="thumb">
+              <img [src]="url + img" alt="صورة المشروع" />
+            </div>
+            }
+          </div>
+          } @else {
+          <div class="thumbs-empty">
+            <span>🖼️ لا توجد صور</span>
+          </div>
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Buildings -->
+  <section class="buildings">
+    <div class="section-head mt-4 pe-3">
+      <h2 class="section-title">المباني والوحدات</h2>
+    </div>
+
+    @if (project?.buildings?.length) {
+
+    <!-- Building Card -->
+    @for (b of project?.buildings; track b.id) {
+    <article class="building-card mb-4">
+
+      <!-- Building Top -->
+
+      <div class="building-top">
+        <div class="b-meta">
+          <div class="b-badge">مبنى</div>
+          <div class="b-text">
+            <h3 class="b-title">{{ b.arTitle }}</h3>
+            <p class="b-sub">
+              <span class="k">المشروع:</span>
+              <span class="v">{{ project?.arTitle }}</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="b-actions">
+          <button class="btn btn-primary " type="button" title="تعديل"
+            [routerLink]="['/dashboard/edit_build' , b.id]">✎</button>
+          <button class="btn btn-ghost danger" type="button" title="حذف"><i class="fas fa-trash"
+              (click)="deleteBuilding(b.id)"></i></button>
+        </div>
+      </div>
+
+      <!-- Units -->
+      <div class="units-wrap">
+
+        <div class="units-head">
+          <div class="uh-left">
+            <h4 class="units-title">الوحدات</h4>
+            <span class="units-count">
+              {{ b.units.length }} وحدة
+            </span>
+          </div>
+
+          <button class="btn btn-soft" type="button" [routerLink]="['/dashboard/add_unit' , b.id]">+ إضافة وحدة</button>
+        </div>
+
+        @if (b.units.length) {
+        <div class="units-grid">
+          @for (u of b.units; track u.id) {
+          <article class="unit-card">
+            <div class="unit-top">
+              <div class="u-name">
+                <span class="u-label">وحدة</span>
+                <h5 class="u-title">{{ u.arTitle }}</h5>
+              </div>
+
+              <span class="pill" [class.sold]="u.isSealed">
+                {{ u.isSealed ? 'مباعة' : 'متاحة' }}
+              </span>
+            </div>
+
+            <div class="unit-body">
+              <p class="u-desc">{{ u.arDescription }}</p>
+
+              <div class="u-info">
+                <div class="info">
+                  <span class="k">الدور</span>
+                  <span class="v">{{ u.floor }}</span>
+                </div>
+                <div class="info">
+                  <span class="k">المساحة</span>
+                  <span class="v">{{ u.area }} م²</span>
+                </div>
+                <div class="info">
+                  <span class="k">السعر</span>
+                  <span class="v price">{{ u.price | number:'1.0-0' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="unit-actions d-flex gap-2">
+             <button [routerLink]="['/dashboard/edit_unit', u.id, b.id]" class="btn btn-primary">
+                تعديل
+                </button>
+                <button class="btn btn-danger sm" type="button" (click)="deleteUnit(u.id)">حذف</button>
+            </div>
+          </article>
+          }
+        </div>
+        } @else {
+        <div class="empty">
+          <div class="empty-icon">📦</div>
+          <div class="empty-title">لا توجد وحدات داخل هذا المبنى</div>
+          <div class="empty-desc">ابدأ بإضافة وحدة جديدة لعرضها هنا.</div>
+          <button class="btn btn-primary" type="button" [routerLink]="['/dashboard/add_unit' , b.id]">+ إضافة
+            وحدة</button>
+        </div>
+        }
+
+      </div>
+    </article>
+    }
+
+    } @else {
+    <div class="empty big">
+      <div class="empty-icon">🏗</div>
+      <div class="empty-title">لا توجد مباني في هذا المشروع</div>
+      <div class="empty-desc">أضف أول مبنى عشان تبدأ إدارة الوحدات بسهولة.</div>
+      <button class="btn btn-primary" type="button" [routerLink]="['/dashboard/add_build' , project?.id]">+ إضافة
+        مبنى</button>
+    </div>
+    }
+
+  </section>
+</section>

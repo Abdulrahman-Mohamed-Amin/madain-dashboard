@@ -1,0 +1,43 @@
+<div class="page">
+    <!-- Header -->
+    <div class="page-head ">
+        <div>
+            <div class="crumbs">لوحة التحكم <span>›</span> المباني</div>
+            <h2 class="title mt-3">المباني</h2>
+            <p class="sub">إدارة المباني وربطها بالمشاريع بسهولة</p>
+        </div>
+
+        <div class="head-actions ">
+            <button class="main_button" type="button" routerLink="/dashboard/add_build">
+                <span class="icon">＋</span> إضافة مبنى
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Grid -->
+    <div class="grid mt-5">
+        <!-- Card -->
+
+        @for (build of buildings; track $index) {
+        <article class="mini-card">
+            <div class="row-text">
+                <span class="label">المبنى :</span>
+                <span class="value">{{ build.arTitle }}</span>
+            </div>
+
+            <div class="row-text">
+                <span class="label">المشروع :</span>
+                <span class="value">{{ build.projectArTitle }}</span>
+            </div>
+
+            <div class="actions">
+                <button class="btn-edit" type="button" [routerLink]="['/dashboard/edit_build', build.id]">تعديل</button>
+                <button class="btn-delete" type="button" (click)="deleteBuilding(build.id , $index)">حذف</button>
+            </div>
+        </article>
+        }
+
+        <!-- كرر الكارد للمباني -->
+    </div>
+</div>

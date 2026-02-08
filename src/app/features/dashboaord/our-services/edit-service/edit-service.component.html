@@ -1,0 +1,136 @@
+<div class="edit-page mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="crumbs">لوحة التحكم <span>›</span> تعديل خدمة</div>
+
+    <button class="btn btn-primary" type="submit" form="editForm">
+      حفظ
+    </button>
+  </div>
+
+  <h3 class="text-center mb-4">تعديل خدمة</h3>
+
+
+  <div class="d-flex align-items-center ">
+    <!-- ✅ الفورم فوق -->
+    <form id="editForm" class="card" [formGroup]="editForm" (ngSubmit)="submit()">
+      <div class="row g-3">
+
+        <div class="col-12 col-lg-6">
+          <label class="form-label">اسم الخدمة بالعربي <span>*</span></label>
+          <input type="text" class="form-control" formControlName="arTitle"
+            [class.invalid]="(submitted && editForm.get('arTitle')?.invalid) && editForm.get('arTitle')?.touched">
+          @if(editForm.get('arTitle')?.errors?.['pattern']){
+          <div class="error">لغة الادخال الصحيحة هي العربية</div>
+          }
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <label class="form-label">اسم الخدمة بالانجليزي <span>*</span></label>
+          <input type="text" class="form-control" formControlName="enTitle"
+            [class.invalid]="(submitted && editForm.get('enTitle')?.invalid) && editForm.get('enTitle')?.touched">
+          @if(editForm.get('enTitle')?.errors?.['pattern']){
+          <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+          }
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <label class="form-label">وصف الخدمة بالعربي <span>*</span></label>
+          <textarea rows="4" class="form-control" formControlName="arDescription"
+            [class.invalid]="(submitted && editForm.get('arDescription')?.invalid) && editForm.get('arDescription')?.touched"></textarea>
+          @if(editForm.get('arDescription')?.errors?.['pattern']){
+          <div class="error">لغة الادخال الصحيحة هي العربية</div>
+          }
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <label class="form-label">وصف الخدمة بالانجليزي <span>*</span></label>
+          <textarea rows="4" class="form-control" formControlName="enDescription"
+            [class.invalid]="(submitted && editForm.get('enDescription')?.invalid) && editForm.get('enDescription')?.touched"></textarea>
+          @if(editForm.get('enDescription')?.errors?.['pattern']){
+          <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+          }
+        </div>
+
+        <!-- ✅ اختيار نوع الميديا -->
+        <div class="col-12">
+          <div class="media-type">
+            <label class="radio">
+              <input type="radio" formControlName="mediaType" value="image">
+              <span>صورة</span>
+            </label>
+
+            <label class="radio">
+              <input type="radio" formControlName="mediaType" value="video">
+              <span>فيديو</span>
+            </label>
+          </div>
+          <div class="hint">اختر نوع واحد فقط (صورة أو فيديو).</div>
+        </div>
+
+        <!-- ✅ Input واحد فقط حسب الاختيار -->
+        <div class="col-12">
+          @if(editForm.get('mediaType')?.value === 'image'){
+          <label class="dropzone">
+            <input type="file" accept="image/*" (change)="onMediaSelected($event)">
+            <div class="dz">
+              <div class="dz-ic">🖼️</div>
+              <div class="dz-txt">
+                <strong>اختيار صورة</strong>
+                <span>JPG / PNG</span>
+              </div>
+            </div>
+          </label>
+          } @else {
+          <label class="dropzone">
+            <input type="file" accept="video/*" (change)="onMediaSelected($event)">
+            <div class="dz">
+              <div class="dz-ic">🎬</div>
+              <div class="dz-txt">
+                <strong>اختيار فيديو</strong>
+                <span>MP4 / MOV</span>
+              </div>
+            </div>
+          </label>
+          }
+        </div>
+
+        <div class="col-12 d-flex gap-2">
+          <button class="btn btn-light" type="button" (click)="resetMedia()">مسح الميديا</button>
+          <button class="btn btn-primary" type="submit">حفظ التعديلات</button>
+        </div>
+
+      </div>
+    </form>
+
+    <!-- ✅ الميديا تحت (المعاينة) -->
+    <div class="card mt-3">
+      <div class="card-head w-100">
+        <h4>المعاينة</h4>
+        <span class="hint">المرفق الحالي والجديد</span>
+      </div>
+
+      <div class="preview-wrap">
+
+        <!-- ✅ لو فيه معاينة جديدة -->
+        @if(mediaPreviewUrl){
+        @if(previewKind === 'image'){
+        <img class="preview-img" [src]="mediaPreviewUrl" alt="preview">
+        } @else {
+        <video class="preview-video" [src]="mediaPreviewUrl" controls></video>
+        }
+        }
+        <!-- ✅ لو مفيش جديد.. اعرض القديم -->
+        @else {
+        @if(currntService && currntService.imagePaths.length){
+        <img class="preview-img" [src]="url + '/' + currntService.imagePaths[0]" alt="current image">
+        } @else {
+        <div class="empty">لا توجد ميديا لعرضها</div>
+        }
+        }
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<section class="page">
+
+    <!-- Header -->
+    <header class="page-header">
+        <div>
+            <h1>المشاريع</h1>
+            <p>عرض وإدارة جميع المشاريع</p>
+        </div>
+
+        <div class="actions">
+            <button class="btn-primary" routerLink="/dashboard/add_project">+ إضافة مشروع</button>
+        </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid">
+
+
+
+        @for(project of projects ; track $index){
+        <article class="project-card">
+            <div class="card-head">
+                <h3>{{project.arTitle}}</h3>
+                <span class="status done" [ngClass]="{  'done': project.projectStatusArName === 'جاهز',
+  'active': project.projectStatusArName !== 'جاهز'}">{{project.projectStatusArName}}</span>
+            </div>
+
+            <p class="description">
+             {{project.arLocationName}}
+            </p>
+
+            <div class="info">
+                <div>
+                    <span>المباني</span>
+                    <strong>{{project.buildingCount}}</strong>
+                </div>
+                <div>
+                    <span>الوحدات</span>
+                    <strong>{{project.unitsCount}}</strong>
+                </div>
+                <div>
+                    <span>المباعة</span>
+                    <strong>26</strong>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <button class="btn-primary" [routerLink]="['/dashboard/project_detils' , project.id]">عرض</button>
+                <button class="btn-light" [routerLink]="['/dashboard/edit_project' , project.id]">تعديل</button>
+                <button class="btn-danger" (click)="deleteProject(project.id , $index)">حذف</button>
+            </div>
+        </article>
+
+        }
+
+
+    </section>
+</section>
