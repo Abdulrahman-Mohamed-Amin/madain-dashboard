@@ -34,7 +34,7 @@ export class AddUnitComponent {
     price: new FormControl('', Validators.required),
     floor: new FormControl(null, Validators.required),
     area: new FormControl('', Validators.required),
-    isSealed: new FormControl(false),
+    isSealed: new FormControl(true),
     buildingId: new FormControl(this.currentId),
     imageFiles: new FormControl([]),
   });

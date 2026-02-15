@@ -1,7 +1,8 @@
 <div class="container-fluid position-relative  pt-4">
     <div class="d-flex justify-content-between align-items-center">
         <div class="crumbs">لوحة التحكم <span>›</span> اضافة مشروع </div>
-        <button class="main_button_outline" [routerLink]="['/dashboard/project_detils' , curuentId]"> عرض المشروع</button>
+        <button class="main_button_outline" [routerLink]="['/dashboard/project_detils' , curuentId]"> عرض
+            المشروع</button>
     </div>
 
     <form [formGroup]="editForm" (ngSubmit)="submit()">
@@ -117,6 +118,24 @@
                     <label for="locationUrl" class="form-label">رابط موقع المشروع <span>*</span></label>
                     <input type="text" class="form-control" id="locationUrl" formControlName="locationUrl"
                         [class.invalid]="(submitted && editForm.get('locationUrl')?.invalid)">
+                </div>
+            </div>
+
+            <!-- ========================= latitude & longitude ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">رقم الخريطة الاصغر <span>*</span></label>
+                    <input type="number" class="form-control" id="latitude" formControlName="latitude"
+                        [class.invalid]="(submitted && editForm.get('latitude')?.invalid) && editForm.get('latitude')?.touched">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">رقم الخريطة الاكبر <span>*</span></label>
+                    <input type="number" class="form-control" id="longitude" formControlName="longitude"
+                        [class.invalid]="(submitted && editForm.get('longitude')?.invalid) && editForm.get('longitude')?.touched">
                 </div>
             </div>
 
@@ -254,7 +273,7 @@
 
 
     <section class="gallery-wrap mt-5">
-        
+
         <header class="gallery-head">
             <div class="title">
                 <h3>صور المشروع</h3>
@@ -270,18 +289,19 @@
         <!-- Grid -->
         <div class="gallery-grid">
             <!-- صورة عادية -->
-             @if(project?.projectImages?.length){
+            @if(project?.projectImages?.length){
 
-                 @for(img of (project?.projectImages ?? []); track $index){
-                 <button type="button" class="img-tile" (click)="deletImgs(img)" [ngClass]="{'is-selected': imgsTodelet.includes(img)}">
-                     <img [src]="imgUrl + img" alt="Project image">
-                     <span class="badge">{{$index + 1}}</span>
-                     <span class="hint">اضغط للتحديد</span>
-                 </button>
-                 }
-             }
-            
-            
+            @for(img of (project?.projectImages ?? []); track $index){
+            <button type="button" class="img-tile" (click)="deletImgs(img)"
+                [ngClass]="{'is-selected': imgsTodelet.includes(img)}">
+                <img [src]="imgUrl + img" alt="Project image">
+                <span class="badge">{{$index + 1}}</span>
+                <span class="hint">اضغط للتحديد</span>
+            </button>
+            }
+            }
+
+
         </div>
 
     </section>

@@ -94,6 +94,7 @@ export class EditUnitComponent {
     formData.append('price', this.editForm.value.price)
     formData.append('floor', this.editForm.value.floor)
     formData.append('area', this.editForm.value.area)
+    formData.append('isSealed', this.editForm.value.isSealed)
     formData.append('buildingId', `${this.currentId}`)
 
 

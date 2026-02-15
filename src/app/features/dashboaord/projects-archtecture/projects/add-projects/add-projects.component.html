@@ -120,6 +120,25 @@
                 </div>
             </div>
 
+            <!-- ========================= latitude & longitude ======================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">رقم الخريطة الاصغر <span>*</span></label>
+                    <input type="number" class="form-control" id="latitude" formControlName="latitude"
+                        [class.invalid]="(submitted && addForm.get('latitude')?.invalid) && addForm.get('latitude')?.touched">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="longitude" class="form-label">رقم الخريطة الاكبر <span>*</span></label>
+                    <input type="number" class="form-control" id="longitude" formControlName="longitude"
+                        [class.invalid]="(submitted && addForm.get('longitude')?.invalid) && addForm.get('longitude')?.touched">
+                </div>
+            </div>
+
+
             <!-- ========================= مساحة مسطحات المشروع ======================= -->
 
             <div class="col-6">

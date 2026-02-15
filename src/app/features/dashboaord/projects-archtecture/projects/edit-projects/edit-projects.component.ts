@@ -98,6 +98,8 @@ export class EditProjectsComponent implements OnInit {
         isSealed: this.project.isSealed,
         surfaceArea: this.project.surfaceArea,
         groundArea: this.project.groundArea,
+        latitude: this.project.latitude,
+        longitude: this.project.longitude,
         buildingCount: this.project.buildingCount,
         unitsCount: this.project.unitsCount,
         projectStatusId: this.project.projectStatusId,
@@ -134,6 +136,8 @@ export class EditProjectsComponent implements OnInit {
     formData.append('projectTypeId', this.editForm.value.projectTypeId)
     formData.append('projectCategory', this.editForm.value.projectCategory)
     formData.append('warranties', this.editForm.value.warranties)
+    formData.append('latitude', this.editForm.value.latitude)
+    formData.append('longitude', this.editForm.value.longitude)
 
     if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);

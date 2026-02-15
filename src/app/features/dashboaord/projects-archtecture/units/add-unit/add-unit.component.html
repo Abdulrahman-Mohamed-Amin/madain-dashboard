@@ -86,16 +86,6 @@
                 </div>
             </div>
 
-            <!-- ==================  صورة الوحدة ================= -->
-
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="imageFiles" class="form-label">صورة للشقة <span>*</span></label>
-                    <input type="file" class="form-control " id="imageFiles"
-                        [class.invalid]="(submitted && addForm.get('imageFiles')?.invalid)" accept="image/*"
-                        (change)="onImagesSelected($event)" formControlName="imageFiles">
-                </div>
-            </div>
             <!-- ==================  حالة الوحدة ================= -->
 
             <div class="col-6">

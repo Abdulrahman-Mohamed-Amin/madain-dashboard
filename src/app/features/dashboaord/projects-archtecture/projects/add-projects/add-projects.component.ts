@@ -84,6 +84,8 @@ export class AddProjectsComponent implements OnInit {
     formData.append('projectTypeId', this.addForm.value.projectTypeId)
     formData.append('projectCategory', this.addForm.value.projectCategory)
     formData.append('warranties', this.addForm.value.warranties)
+    formData.append('latitude', this.addForm.value.latitude)
+    formData.append('longitude', this.addForm.value.longitude)
 
     if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);
