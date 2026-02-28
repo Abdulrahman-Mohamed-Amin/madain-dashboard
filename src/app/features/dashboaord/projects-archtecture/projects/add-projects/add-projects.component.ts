@@ -13,7 +13,7 @@ import { RouterLink, RouterModule } from "@angular/router";
 @Component({
   selector: 'app-add-projects',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule , RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, RouterLink],
   providers: [],
   templateUrl: './add-projects.component.html',
   styleUrl: './add-projects.component.css'
@@ -21,8 +21,10 @@ import { RouterLink, RouterModule } from "@angular/router";
 export class AddProjectsComponent implements OnInit {
   submitted = false;
 
-  englishPattern = /^[A-Za-z0-9\s"',._-]+$/;
-  arabicPattern = /^[\u0600-\u06FF0-9\u0660-\u0669\s"',.،_-]+$/;
+
+
+  englishPattern = /^[A-Za-z0-9\s"',._()\-\[\]]+$/;
+  arabicPattern = /^[\u0600-\u06FF0-9\u0660-\u0669\s"',.،_()\-\[\]]+$/;
 
   videoFile: File | null = null;
   imageFiles: File[] = [];
@@ -62,7 +64,7 @@ export class AddProjectsComponent implements OnInit {
     warranties: new FormControl([]),
 
   });
-  
+
   add() {
     const formData = new FormData()
 

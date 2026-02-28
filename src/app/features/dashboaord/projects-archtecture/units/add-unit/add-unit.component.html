@@ -29,6 +29,19 @@
                         [class.invalid]="(submitted && addForm.get('enTitle')?.invalid)">
                 </div>
             </div>
+            <!-- ==================  مساحة الوحدة ================= -->
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="area" class="form-label">مساحة الوحدة<span>*</span></label>
+                    <input type="text" class="form-control " id="area" formControlName="area"
+                        [class.invalid]="(submitted && addForm.get('area')?.invalid) && addForm.get('area')?.touched">
+                    @if(addForm.get('area')?.errors?.['pattern']){
+
+                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
+                    }
+                </div>
+            </div>
 
             <!-- ==================  سعر الوحدة ================= -->
 
@@ -58,19 +71,7 @@
                 </div>
             </div>
 
-            <!-- ==================  مساحة الوحدة ================= -->
 
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="area" class="form-label">مساحة الوحدة<span>*</span></label>
-                    <input type="text" class="form-control " id="area" formControlName="area"
-                        [class.invalid]="(submitted && addForm.get('area')?.invalid) && addForm.get('area')?.touched">
-                    @if(addForm.get('area')?.errors?.['pattern']){
-
-                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
-                    }
-                </div>
-            </div>
 
             <!-- ==================  طابق الوحدة ================= -->
 
@@ -97,7 +98,7 @@
                         <span class="check-box"></span>
                         <span class="check-label">الوحدة مباعة</span>
                     </label>
-                
+
                     <span class="status" [class.sold]="addForm.get('isSealed')?.value"
                         [class.available]="!addForm.get('isSealed')?.value">
                         {{ addForm.get('isSealed')?.value ? 'مباعة' : 'غير مباعة' }}

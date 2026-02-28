@@ -12,20 +12,20 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'app-edit-projects',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule , CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './edit-projects.component.html',
   styleUrl: './edit-projects.component.css'
 })
 export class EditProjectsComponent implements OnInit {
   submitted = false;
 
- project: Project | null = null;
+  project: Project | null = null;
   curuentId: number = 0
 
   imgUrl = environment.mediaUrl
 
-  englishPattern = /^[A-Za-z0-9\s"',._-]+$/;
-  arabicPattern = /^[\u0600-\u06FF0-9\u0660-\u0669\s"',.،_-]+$/;
+  englishPattern = /^[A-Za-z0-9\s"',._()\-\[\]]+$/;
+  arabicPattern = /^[\u0600-\u06FF0-9\u0660-\u0669\s"',.،_()\-\[\]]+$/;
 
   videoFile: File | null = null;
   imageFiles: File[] = [];
@@ -38,10 +38,10 @@ export class EditProjectsComponent implements OnInit {
   projectTypes: any[] = []
   projectStatus: any[] = []
 
-  imgsTodelet:string[] = []
+  imgsTodelet: string[] = []
   selectIMg = false
 
-  interFcaeImgDelete:string = ''
+  interFcaeImgDelete: string = ''
 
   editForm: FormGroup = new FormGroup({
     arTitle: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
@@ -66,7 +66,7 @@ export class EditProjectsComponent implements OnInit {
     projectTypeId: new FormControl(0, Validators.required),
     interfaceImageFile: new FormControl(''),
     proposalFile: new FormControl(''),
-    projectCategory: new FormControl(1 , Validators.required),
+    projectCategory: new FormControl(1, Validators.required),
     warranties: new FormControl([]),
     ImagesToDelete: new FormControl([]),
 
@@ -165,59 +165,59 @@ export class EditProjectsComponent implements OnInit {
     if (this.editForm.valid) {
       this._project.edit(this.curuentId, formData).subscribe({
         next: (res) => {
-          
+
           this.alert.toaster("تم تعديل المشروع بنجاح", 'success')
           this.videoFile = null;
           this.interfaceImageFile = null;
           this.proposalFile = null;
           this.imageFiles = [];
-          this.submitted =false
+          this.submitted = false
 
         },
         error: () => {
           this.alert.toaster('حدث خطأ أثناء التحديث', "error");
         },
-        complete:() =>{
+        complete: () => {
           setTimeout(() => {
             location.reload()
           }, 1000);
         }
       })
     } else {
-      this.alert.toaster( 'بعض الحقول فارغة او هناك خطا ما', "error")
+      this.alert.toaster('بعض الحقول فارغة او هناك خطا ما', "error")
     }
 
   }
 
 
-  deletImgs(url:string){
-    
+  deletImgs(url: string) {
+
     let check = this.imgsTodelet.indexOf(url)
-    
-    if(check == -1){
+
+    if (check == -1) {
 
       this.imgsTodelet.push(url)
-    }else{
-      this.imgsTodelet.splice(check , 1)
+    } else {
+      this.imgsTodelet.splice(check, 1)
     }
 
-    
-    
+
+
   }
 
-  deleteInterFaceImg(){
-    
-    if(this.interFcaeImgDelete == ''){
+  deleteInterFaceImg() {
+
+    if (this.interFcaeImgDelete == '') {
       this.interFcaeImgDelete = this.project!.videoPath!
       this.selectIMg = true
-    }else{
+    } else {
       this.interFcaeImgDelete = ''
       this.selectIMg = false
 
     }
 
     console.log(this.interFcaeImgDelete);
-    
+
   }
 
   getProjectTypes() {

@@ -27,7 +27,7 @@ export class AddNewComponent {
     arDescription: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
     enDescription: new FormControl('', [Validators.required, Validators.pattern(this.englishPattern)]),
     videoFile: new FormControl(null),
-    imageFiles: new FormControl([], Validators.required),
+    imageFiles: new FormControl([]),
     date: new FormControl('', Validators.required)
 
   });

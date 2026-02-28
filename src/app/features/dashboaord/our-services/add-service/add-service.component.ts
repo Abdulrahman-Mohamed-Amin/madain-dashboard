@@ -78,6 +78,7 @@ export class AddServiceComponent implements OnInit {
     if (this.addForm.valid) {
       this._service.addService(formData).subscribe({
         next: (res) => {
+          this.submitted =false
           this.addForm.reset()
           this.alert.toaster("تمت اضافة الخدمة بنجاح" , 'success')
         },

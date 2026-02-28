@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://madain.runasp.net/api' , 
-  mediaUrl: 'http://madain.runasp.net/'
+  apiUrl: 'https://madain.runasp.net/api' , 
+  mediaUrl: 'https://madain.runasp.net/'
 };

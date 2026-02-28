@@ -1,3 +1,4 @@
+import { Unit } from './../../../../../core/interfaces/unit/unit';
 
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterModule } from "@angular/router";
@@ -15,6 +16,7 @@ import { CommonModule } from "@angular/common";
 export class ShowProjectsComponent implements OnInit{
 
   projects:Project[] = []
+  sold:number = 0
   constructor(private _projets:ProjectsService , private alert:AlertsService) {}
 
   ngOnInit(): void {
@@ -24,8 +26,6 @@ export class ShowProjectsComponent implements OnInit{
   getProjects(){
     this._projets.getAllProjects().subscribe(res =>{
       this.projects = res
-      console.log(res);
-      
     })
   }
   async deleteProject(id:number , idx:number){
