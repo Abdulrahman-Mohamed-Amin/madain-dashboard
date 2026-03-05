@@ -1,0 +1,29 @@
+<div class="image-manager p-5">
+
+    <!-- Upload Section -->
+    <form class="upload-box" [formGroup]="addForm" (ngSubmit)="add()">
+        <label class="">
+            <input type="file" (change)="onImgChange($event)" accept="image/*" formControlName="img">
+       
+        </label>
+
+        <button type="submit">send</button>
+    </form>
+
+    <!-- Images Grid -->
+    <div class="images-grid">
+
+        @for(img of imgs ; track $index){
+        <div class="image-card">
+            <img [src]="url + img.imagePath" alt="image">
+
+            <button class="delete-btn" (click)="deleteImage(img.id)">
+                ✕
+            </button>
+
+        </div>
+        }
+
+    </div>
+
+</div>

@@ -20,6 +20,7 @@ import { ShowBuildingsComponent } from './features/dashboaord/projects-archtectu
 import { ProjectdetilsComponent } from './features/dashboaord/projects-archtecture/projects/projectdetils/projectdetils.component';
 import { AddUnitComponent } from './features/dashboaord/projects-archtecture/units/add-unit/add-unit.component';
 import { EditUnitComponent } from './features/dashboaord/projects-archtecture/units/edit-unit/edit-unit.component';
+import { PartnerComponent } from './features/dashboaord/partner/partner.component';
 
 export const routes: Routes = [
 
@@ -51,7 +52,9 @@ export const routes: Routes = [
             { path: 'show_buildings', component: ShowBuildingsComponent },
 
             { path: 'add_unit/:id', component: AddUnitComponent },
-            { path:'edit_unit/:unitId/:buildingId', component: EditUnitComponent}
+            { path:'edit_unit/:unitId/:buildingId', component: EditUnitComponent},
+
+            { path:'partner', component: PartnerComponent}
 
 
         ]
