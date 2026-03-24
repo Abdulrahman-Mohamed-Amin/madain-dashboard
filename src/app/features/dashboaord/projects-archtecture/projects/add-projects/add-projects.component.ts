@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 
-
-import { MessageService } from 'primeng/api';
 import { StatusService } from '../../../../../core/services/project-status/status.service';
 import { TypeService } from '../../../../../core/services/project-type/type.service';
 import { ProjectsService } from '../../../../../core/services/projects/projects.service';
@@ -62,6 +60,7 @@ export class AddProjectsComponent implements OnInit {
     proposalFile: new FormControl(''),
     projectCategory: new FormControl(1),
     warranties: new FormControl([]),
+    date: new FormControl(null),
 
   });
 
@@ -88,6 +87,7 @@ export class AddProjectsComponent implements OnInit {
     formData.append('warranties', this.addForm.value.warranties)
     formData.append('latitude', this.addForm.value.latitude)
     formData.append('longitude', this.addForm.value.longitude)
+    formData.append('date', this.addForm.value.date)
 
     if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);

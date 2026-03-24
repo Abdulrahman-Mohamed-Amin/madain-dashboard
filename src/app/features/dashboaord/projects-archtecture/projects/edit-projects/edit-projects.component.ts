@@ -69,6 +69,7 @@ export class EditProjectsComponent implements OnInit {
     projectCategory: new FormControl(1, Validators.required),
     warranties: new FormControl([]),
     ImagesToDelete: new FormControl([]),
+    date: new FormControl(null),
 
   });
 
@@ -105,6 +106,7 @@ export class EditProjectsComponent implements OnInit {
         projectStatusId: this.project.projectStatusId,
         projectTypeId: this.project.projectTypeId,
         projectCategory: this.project.arProjectCategory == "عماره سكنيه" ? 1 : 2,
+        date: this.project.date,
       })
     })
   }
@@ -138,6 +140,7 @@ export class EditProjectsComponent implements OnInit {
     formData.append('warranties', this.editForm.value.warranties)
     formData.append('latitude', this.editForm.value.latitude)
     formData.append('longitude', this.editForm.value.longitude)
+    formData.append('date', this.editForm.value.date)
 
     if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);

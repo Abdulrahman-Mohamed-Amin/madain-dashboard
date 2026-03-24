@@ -9,7 +9,7 @@ export interface Project {
   enLocationName: string;
   arLocationDescription: string;
   enLocationDescription: string;
-
+  date:string ,
   locationUrl: string;
   latitude: number;
   longitude: number;

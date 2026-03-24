@@ -257,10 +257,18 @@
             </div>
             <!-- ========================= مباع ام لا  ======================= -->
 
-            <div class="col-12">
+            <div class="col-6">
                 <div class="mb-3">
                     <label for="name" class="form-label"> هل المشروع مباع ام لا<span>*</span></label>
                     <input type="checkbox" class="check-box" formControlName="isSealed">
+                </div>
+            </div>
+            <!-- ========================= تاريخ المشروع ======================= -->
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="date" class="form-label">التاريخ للمشروع <span>*</span></label>
+                    <input type="date" class="form-control" id="date" formControlName="date"
+                        [class.invalid]="(submitted && editForm.get('date')?.invalid)">
                 </div>
             </div>
 
