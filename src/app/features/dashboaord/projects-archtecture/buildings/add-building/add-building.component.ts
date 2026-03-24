@@ -29,8 +29,8 @@ export class AddBuildingComponent {
   addForm: FormGroup = new FormGroup({
     arTitle: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
     enTitle: new FormControl('', [Validators.required, Validators.pattern(this.englishPattern)]),
-    arDescription: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
-    enDescription: new FormControl('', [Validators.required, Validators.pattern(this.englishPattern)]),
+    arDescription: new FormControl('building'),
+    enDescription: new FormControl('building'),
     projectId: new FormControl(null, Validators.required),
     imageFiles: new FormControl([]),
     units: new FormControl(null),

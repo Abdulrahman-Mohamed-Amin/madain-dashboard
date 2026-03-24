@@ -30,8 +30,8 @@ export class EditBuildingComponent {
   editForm: FormGroup = new FormGroup({
     arTitle: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
     enTitle: new FormControl('', [Validators.required, Validators.pattern(this.englishPattern)]),
-    arDescription: new FormControl('', [Validators.required, Validators.pattern(this.arabicPattern)]),
-    enDescription: new FormControl('', [Validators.required, Validators.pattern(this.englishPattern)]),
+    arDescription: new FormControl(''),
+    enDescription: new FormControl(''),
     projectId: new FormControl(null, Validators.required),
     imageFiles: new FormControl([]),
     units: new FormControl(null),

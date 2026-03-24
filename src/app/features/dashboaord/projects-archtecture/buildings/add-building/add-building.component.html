@@ -33,28 +33,7 @@
 
             <!-- ==================== الوصف ================== -->
 
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="arDescription" class="form-label">وصف المبنى بالعربي<span>*</span></label>
-                    <input type="text" class="form-control" id="arDescription" formControlName="arDescription"
-                        [class.invalid]="(submitted && addForm.get('arDescription')?.invalid) && addForm.get('arDescription')?.touched">
-                    @if(addForm.get('arDescription')?.errors?.['pattern']){
-                    <div class="error">لغة الادخال الصحيحة هي العربية</div>
-                    }
-                </div>
-            </div>
 
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="enDescription" class="form-label">وصف المبنى بالانجليزي<span>*</span></label>
-                    <input type="text" class="form-control " id="enDescription" formControlName="enDescription"
-                        [class.invalid]="(submitted && addForm.get('enDescription')?.invalid) && addForm.get('enDescription')?.touched">
-                    @if(addForm.get('enDescription')?.errors?.['pattern']){
-
-                    <div class="error">لغة الادخال الصحيحة هي الانجليزية</div>
-                    }
-                </div>
-            </div>
 
             <!-- =================== تابع لاي مشروع ================= -->
 

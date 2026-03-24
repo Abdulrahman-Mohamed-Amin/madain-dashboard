@@ -26,6 +26,12 @@ export class ShowProjectsComponent implements OnInit{
   getProjects(){
     this._projets.getAllProjects().subscribe(res =>{
       this.projects = res
+
+      res.map(p =>{
+        console.log();
+        
+      })
+      
     })
   }
   async deleteProject(id:number , idx:number){
