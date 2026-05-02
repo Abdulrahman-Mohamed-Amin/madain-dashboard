@@ -66,6 +66,7 @@ export class AddNewComponent {
     if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);
     }
+    
 
     if (this.imageFiles && this.imageFiles.length > 0) {
       this.imageFiles.forEach((img) => {
